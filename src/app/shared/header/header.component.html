@@ -1,0 +1,74 @@
+<header class="topbar">
+    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+        <!-- ============================================================== -->
+        <!-- Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                <!-- Logo icon --><b>
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="./assets/images/LogoNegroSinFondo2.png" width= 180px height= 60px; alt="homepage" class="dark-logo" />
+                    <!-- Light Logo icon -->
+                    <!-- <img src="./assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
+                </b>
+                <!--End Logo icon -->
+                <!-- Logo text -->
+                <span>
+                 <!-- dark Logo text -->
+                 <!-- <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                 <!-- Light Logo text -->    
+                 <!-- <img src="./assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
+                </span> </a>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Fin Logo -->
+        <!-- ============================================================== -->
+        <div class="navbar-collapse">
+            <!-- ============================================================== -->
+            <!-- Esconder barra lateral-->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item hidden-sm-down"></li> -->
+            </ul>
+            <!-- ============================================================== -->
+            <!-- Perfil y buscador -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav my-lg-0">
+                <!-- ============================================================== -->
+                <!-- Buscador -->
+                <!-- ============================================================== -->
+                <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                    <form class="app-search">
+                        <input type="text" class="form-control" placeholder="Buscar"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                </li>
+
+                <!-- ============================================================== -->
+                <!-- Perfil -->
+                <!-- ============================================================== -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img [src]="imgUrl" alt="user" class="profile-pic" /></a>
+                    <div class="dropdown-menu dropdown-menu-right animated fadeIn fast">
+                        <ul class="dropdown-user">
+                            <li>
+                                <div class="dw-user-box">
+                                    <div class="u-img"><img [src]="imgUrl" alt="user"></div>
+                                    <div class="u-text">
+                                        <h4>{{nombreUser}} {{apellidoUser}}</h4>
+                                        <p class="text-muted">{{mailUser | slice:0:20}}{{(mailUser.length > 20) ? '...': ''}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a routerLink='./cuenta'><i class="ti-user"></i> Mi Cuenta</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a (click)="logout()" class="cursor"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

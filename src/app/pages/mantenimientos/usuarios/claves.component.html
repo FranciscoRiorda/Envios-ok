@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Modificar contraseña del usuario</font>
+                    </font>
+                </h4>
+                <form class="form p-t-20" [formGroup]="usuarioForm" (submit)="actualizarUsuario()">
+                    <div class="form-group">
+                        <label for="pwd1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nueva contraseña</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-unlock"></i></div>
+                            <input type="password" class="form-control" id="pwd1" placeholder="Ingrese su contraseña actual" formControlName="password">
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="pwd2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Repetir contraseña</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-lock"></i></div>
+                            <input type="password" class="form-control" id="pwd2" placeholder="Ingrese su nueva contraseña" formControlName="password2">
+                        </div>
+                        <div class="col text-danger">
+                            <p *ngIf="passwordDif()">* Las contraseñas deben ser iguales</p>
+                        </div>
+                    </div> -->
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-save"></i> Guardar cambios</font></font></button><br><br>
+                    <button routerLink="/dashboard/usuarios" type="button" class="btn btn-inverse  btn-block waves-effect waves-light m-r-10"><i class="ti-na"></i> Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

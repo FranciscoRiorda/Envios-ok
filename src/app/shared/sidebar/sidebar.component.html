@@ -1,0 +1,44 @@
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="user-profile">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img [src]="imgUrl" alt="user" /><span class="hide-menu">{{nombreUser}} {{apellidoUser}} </span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLinkActive="active" routerLink='./cuenta'>Mi Cuenta </a></li>
+                        <li><a routerLink='' (click)="logout()" class="cursor">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                <li class="nav-devider"></li>
+                <!-- <li class="nav-small-cap">Gestión de Pedidos</li> -->
+                <li *ngFor=" let item of sidebarService.menu">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i [class]="item.icono"></i><span class="hide-menu">{{item.titulo}}</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li *ngFor="let subMenuItem of item.submenu">
+                            <a [routerLink]="subMenuItem.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{subMenuItem.titulo}} </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-devider"></li>
+                <!-- <li class="nav-small-cap">Registros</li> -->
+                <!-- <li *ngFor="let item of menuItems2">
+
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-calendar"></i><span class="hide-menu">Registros</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li *ngFor="let subMenuItem2 of item.submenu2">
+                            <a [routerLink]="subMenuItem2.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{subMenuItem2.titulo}} </a>
+                        </li>
+
+                    </ul>
+                </li> -->
+            </ul>
+
+        </nav>
+        <!-- Fin Sidebar navigation -->
+    </div>
+    <!-- Fin Sidebar scroll-->
+</aside>

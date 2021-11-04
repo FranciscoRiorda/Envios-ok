@@ -1,0 +1,724 @@
+<div class="row animated fadeIn fast">
+    <div class="col-md-10">
+        <h4 class="card-title">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Envíos por fecha de retiro</font>
+            </font>
+        </h4>
+        <div class="card">
+            <div class="card-body">
+                <form (submit)="cargarPedidosPorMes()">
+                    <div class="">
+                        <div>
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de inicio</font></font></label>
+                                <div class="col-md-9">
+                                    <input type="date" class="form-control" placeholder="aaaa-mm-dd" name="fechaInicial" [(ngModel)]="fechaInicial">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de fin</font></font></label>
+                                <div class="col-md-9">
+                                    <input type="date" class="form-control" placeholder="aaaa-mm-dd" name="fechaFinal" [(ngModel)]="fechaFinal">
+                                </div>
+                            </div>
+                            <button class="btn btn-info der"><i class="fa fa-search"></i> Buscar pedidos</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast">
+    <div class="col-10">
+        <tr>
+            <th>Envíos de paquetería registrados</th>
+        </tr>
+    </div>
+    <div class="text-right">
+        <th> {{totalIngreso() |currency}}</th>
+    </div>
+</div>
+
+
+<div class="card-body tamaño2 animated fadeIn fast">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="w5">Nº</th>
+                    <th class="w5">Nombre cliente</th>
+                    <th class="w5">Día retiro</th>
+                    <th class="w5">Domicilio retiro</th>
+                    <th>Estado retiro</th>
+                    <th class="w5">Día entrega</th>
+                    <th class="w5">Domicilio entrega</th>
+                    <th>Estado entrega</th>
+                    <th class="w5">Costo envío</th>
+                    <th class="w3">Estado</th>
+                    <th class="text-nowrap w3">Acc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pedido of data; index as i">
+                    <td>{{i + 1 }}</td>
+                    <td>{{pedido.nombreCliente}}</td>
+                    <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                    <td>{{pedido.domicilioRetiro}}</td>
+                    <td>
+                        <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                        <option value="Pendiente" >Pendiente</option>
+                                        <option value="Retirado">Retirado</option>
+                                        <option value="No Retirado">No Retirado</option>
+                                    </select>
+                    </td>
+                    <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                    <td>{{pedido.domicilioEntrega}}</td>
+                    <td>
+                        <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Entregado">Entregado</option>
+                                        <option value="No Entregado">No Entregado</option>
+                                    </select>
+                    </td>
+                    <td>{{pedido.costoEnvio | currency}}</td>
+                    <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                        <div class="label label-table label-success">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Finalizado</font>
+                            </font>
+                        </div>
+                    </td>
+                    <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                        <div class="label label-table label-warning">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Pendiente</font>
+                            </font>
+                        </div>
+                    </td>
+                    <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                        <div class="label label-table label-danger">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Cancelado</font>
+                            </font>
+                        </div>
+                    </td>
+                    <td class="text-nowrap text-center">
+                        <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                        <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                        <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+
+        <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+        <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+    </div>
+</div>
+
+<hr>
+
+
+<div class="row animated fadeIn fast">
+    <div class="card-body">
+        <h6 class="card-subtitle">
+        </h6>
+        <p class="text-center">
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            Envíos en estado Pendiente
+        </font></font></button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Envíos en estado Retirado
+    </font></font></button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Envíos en estado No Retirado
+    </font></font></button>
+        </p>
+
+        <div class="collapse" id="collapseExample1" style="">
+            <div class="card-body tamaño2">
+                <div class="table-responsive">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-10">
+                                <tr>
+                                    <th>Envíos Pendientes</th>
+                                </tr>
+                            </div>
+                            <div class="text-right">
+                                <th> {{totalPendiente() |currency}}</th>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w5">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of pendiente; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                                <option value="Pendiente" >Pendiente</option>
+                                                <option value="Retirado">Retirado</option>
+                                                <option value="No Retirado">No Retirado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="No Entregado">No Entregado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample2" style="">
+            <div class="card-body tamaño2">
+                <div class="table-responsive">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-10">
+                                <tr>
+                                    <th>Envíos Retirados</th>
+                                </tr>
+                            </div>
+                            <div class="text-right">
+                                <th> {{totalRetirado() |currency}}</th>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w5">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of retirado; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                                <option value="Pendiente" >Pendiente</option>
+                                                <option value="Retirado">Retirado</option>
+                                                <option value="No Retirado">No Retirado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="No Entregado">No Entregado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample3" style="">
+            <div class="card-body tamaño2">
+                <div class="table-responsive">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-10">
+                                <tr>
+                                    <th>Envíos No Retirados</th>
+                                </tr>
+                            </div>
+                            <div class="text-right">
+                                <th> {{totalNoRetirado() |currency}}</th>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w5">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of noRetirado; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                                <option value="Pendiente" >Pendiente</option>
+                                                <option value="Retirado">Retirado</option>
+                                                <option value="No Retirado">No Retirado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="No Entregado">No Entregado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row animated fadeIn fast">
+    <div class="card-body">
+        <h6 class="card-subtitle">
+        </h6>
+        <p class="text-center">
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            Envíos en estado Pendientes de entrega
+        </font></font></button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Envíos en estado Entregados
+    </font></font></button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Envíos en estado No Entregados
+    </font></font></button>
+        </p>
+        <p>
+        </p>
+        <div class="collapse" id="collapseExample4" style="">
+            <div class="card-body tamaño2">
+                <div class="table-responsive">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-10">
+                                <tr>
+                                    <th>Envíos pendientes de entrega</th>
+                                </tr>
+                            </div>
+                            <div class="text-right">
+                                <th> {{totalPendienteEntrega() |currency}}</th>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w5">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of pendienteEntrega; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                                <option value="Pendiente" >Pendiente</option>
+                                                <option value="Retirado">Retirado</option>
+                                                <option value="No Retirado">No Retirado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="No Entregado">No Entregado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="collapse" id="collapseExample5" style="">
+            <div class="card-body tamaño2">
+                <div class="table-responsive">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-10">
+                                <tr>
+                                    <th>Envíos Entregados</th>
+                                </tr>
+                            </div>
+                            <div class="text-right">
+                                <th> {{totalEntregado() |currency}}</th>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w5">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of entregado; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                                <option value="Pendiente" >Pendiente</option>
+                                                <option value="Retirado">Retirado</option>
+                                                <option value="No Retirado">No Retirado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="No Entregado">No Entregado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample6" style="">
+            <div class="card-body tamaño2">
+                <div class="table-responsive">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-10">
+                                <tr>
+                                    <th>Envíos No Entregados</th>
+                                </tr>
+                            </div>
+                            <div class="text-right">
+                                <th> {{totalNoEntregado() |currency}}</th>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w5">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of noEntregado; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                                <option value="Pendiente" >Pendiente</option>
+                                                <option value="Retirado">Retirado</option>
+                                                <option value="No Retirado">No Retirado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                                <option value="Pendiente">Pendiente</option>
+                                                <option value="Entregado">Entregado</option>
+                                                <option value="No Entregado">No Entregado</option>
+                                            </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" data-original-title="Ver usuario"> <i class="fa fa-tasks text-info"></i>&nbsp;&nbsp;&nbsp;</a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

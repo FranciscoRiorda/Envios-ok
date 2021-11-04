@@ -1,0 +1,194 @@
+<div class="row animated fadeIn fast">
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-10"></span><img src="../assets/images/icon/income.png" alt="Ingreso"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Envíos agendados</font>
+                            </font>
+                        </h6>
+                        <h2 class="m-t-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{totalIngresos}}</font>
+                            </font>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-10"></span><img src="../assets/images/icon/expense.png" alt="Ingreso"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Gastos registrados</font>
+                            </font>
+                        </h6>
+                        <h2 class="m-t-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{totalGastos}}</font>
+                            </font>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-10"></span><img src="../assets/images/icon/assets.png" alt="Ingreso"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Activos totales</font>
+                            </font>
+                        </h6>
+                        <h2 class="m-t-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{activoTotal |currency}}</font>
+                            </font>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-10"></span><img src="../assets/images/icon/staff.png" alt="Ingreso"></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Total de Clientes</font>
+                            </font>
+                        </h6>
+                        <h2 class="m-t-0">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{totalClientes}}</font>
+                            </font>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<br>
+
+<div class="card-body animated fadeIn fast">
+    <h2>Buscar reportes</h2>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6 derrr">
+                <select [(ngModel)]="fechaRend" class="custom-select" (click)="buscarReporte2()" (click)="buscarReporte()">
+                            <option [value]="per.value" *ngFor = "let per of periodos" [selected]="">
+                                {{per.nombre}}
+                            </option>                            
+                </select>
+                <small class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Selecciona el período </font></font></small>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- <div class="col-md-offset-3 col-md-12">
+                <button (click)="buscarReporte()" class="btn btn-info"><i class="fa fa-search"></i> Buscar reporte</button>&nbsp;&nbsp;
+            </div> -->
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row animated fadeIn fast">
+        <div class="col-lg-4 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Ingreso Mensual</font>
+                        </font>
+                    </h4>
+                    <div class="text-right animated fadeIn fast">
+                        <span class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ingresos de hoy</font></font></span>
+                        <h1 class="font-light"><sup><i class="ti-arrow-up text-success"></i></sup>
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;"> {{totalIngreso() | currency}}</font>
+                            </font>
+                        </h1>
+                    </div>
+                    <br>
+                    <span class="text-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20%</font></font></span>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" [style.width]="getPorcentajeIngreso()" style="height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Egreso Mensual</font>
+                        </font>
+                    </h4>
+                    <div class="text-right">
+                        <span class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">algo</font></font></span>
+                        <h1 class="font-light"><sup><i class="ti-arrow-down text-danger"></i></sup>
+                            <font style="vertical-align: inherit;">
+                                <font class="animated fadeIn fast" style="vertical-align: inherit;"> {{totalGasto() | currency}}</font>
+                            </font>
+                        </h1>
+                    </div>
+                    <br>
+                    <span class="text-danger"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">60%</font></font></span>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar" [style.width]="getPorcentaje()" style=" height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Rendimiento</font>
+                        </font>
+                    </h4>
+                    <div class="text-right animated fadeIn fast">
+                        <span class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ingresos de hoy</font></font></span>
+                        <h1 class="font-light">
+                            <sup *ngIf="totalIngreso() > totalGasto()"><i class="ti-arrow-up text-inverse"></i></sup>
+                            <sup *ngIf="totalGasto() > totalIngreso()"><i class="ti-arrow-down text-inverse"></i></sup>
+                            <font style="vertical-align: inherit;">
+                                <font name="rendimiento" style="vertical-align: inherit;"> {{totalIngreso()-totalGasto() | currency}}</font>
+                            </font>
+                        </h1>
+                    </div>
+                    <br>
+                    <span class="text-inverse"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">80%</font></font></span>
+                    <div class="progress">
+                        <div class="progress-bar bg-inverse" role="progressbar" style="width: 100%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

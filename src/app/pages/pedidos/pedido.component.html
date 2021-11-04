@@ -1,0 +1,198 @@
+<div class="card-body">
+    <form action="#" class="form-horizontal" [formGroup]="pedidoForm" (submit)="guardarPedido()">
+        <div class="form-body">
+            <h3 class="box-title">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Datos del cliente</font>
+                </font>
+            </h3>
+            <hr class="m-t-0 m-b-40">
+            <div class="row">
+                <!-- <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Número de pedido</font></font></label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" placeholder="Nº pedido" formControlName="" readonly>
+                            <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Esta es la ayuda en línea </font></font></small>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliente</font></font></label>
+                        <div class="col-md-9">
+                            <select class="form-control" formControlName="nombreCliente">
+                                <option value="">Seleccione cliente</option>
+                                <option *ngFor="let cliente of clientes" [value]="cliente.nombre">{{cliente.nombre}}</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+                <!-- <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre del cliente</font></font></label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control form-control-danger" placeholder="Ingrese nombre completo" formControlName="nombreCliente">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo electrónico</font></font></label>
+                        <div class="col-md-9">
+                            <input type="mail" class="form-control form-control-danger" placeholder="Ingrese el mail del cliente" formControlName="mailCliente">
+                            <!-- <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Este campo tiene un error. </font></font></small> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono contacto retiro</font></font></label>
+                        <div class="col-md-9">
+                            <input type="tel" class="form-control" placeholder="Teléfono de quien entrega paquete" formControlName="telEntregaPaq">
+                            <!-- <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Esta es la ayuda en línea </font></font></small> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono contacto entrega</font></font></label>
+                        <div class="col-md-9">
+                            <input type="tel" class="form-control" placeholder="Teléfono de quien recibe paquete" formControlName="telRecibePaq">
+                            <!-- <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Esta es la ayuda en línea </font></font></small> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <h3 class="box-title">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Datos del envío</font>
+                </font>
+            </h3>
+            <hr class="m-t-0 m-b-40">
+
+            <!--/row-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de retiro</font></font></label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" placeholder="dd / mm / aaaa" formControlName="diaRetiro">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de entrega</font></font></label>
+                        <div class="col-md-9">
+                            <input type="date" value="" class="form-control" placeholder="dd / mm / aaaa" formControlName="diaEntrega">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <!-- has-danger -->
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domicilio de retiro</font></font></label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control form-control-danger" placeholder="Ingrese domicilio de retiro" formControlName="domicilioRetiro">
+                            <!-- <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Este campo tiene un error. </font></font></small> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domicilio de entrega</font></font></label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control form-control-danger" placeholder="Ingrese domicilio de entrega" formControlName="domicilioEntrega">
+                            <!-- <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Este campo tiene un error. </font></font></small> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Costo del envío ($)</font></font></label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control form-control-danger" placeholder="Ingrese el costo total del envío" formControlName="costoEnvio">
+                            <!-- <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Este campo tiene un error. </font></font></small> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <h3 class="box-title">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Estado del envío</font>
+                </font>
+            </h3>
+            <hr class="m-t-0 m-b-40">
+
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estado de retiro</font></font></label>
+                    <div class="col-md-9">
+                        <select class="form-control custom-select" formControlName="estadoRetiro">
+                            <option value="Pendiente"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pendiente</font></font></option>
+                            <option value="Retirado"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retirado</font></font></option>
+                            <option value="No Retirado"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No Retirado</font></font></option>
+                            </select>
+                        <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Selecciona el estado del envío </font></font></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estado de entrega</font></font></label>
+                    <div class="col-md-9">
+                        <select class="form-control custom-select" formControlName="estadoEntrega">
+                            <option value="Pendiente"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pendiente</font></font></option>
+                            <option value="Entregado"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entregado</font></font></option>
+                            <option value="No Entregado"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No Entregado</font></font></option>
+                            </select>
+                        <small class="form-control-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Selecciona el estado de la entraga </font></font></small>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="box-title">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Observaciones adicionales</font>
+                </font>
+            </h3>
+            <hr class="m-t-0 m-b-40">
+            <!--/row-->
+            <div class="row">
+                <div class="col-md-12 c">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Observaciones</font></font></label>
+                        <div class="col-md-9">
+                            <textarea name=observaciones type="text" rows="5" cols="50" placeholder="Escribe las observaciones del envío" formControlName="observaciones"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <div class="form-actions">
+            <div class="row centrarBtn">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-12">
+                            <button [disabled]="pedidoForm.invalid" class="btn btn-info"><i class="fa fa-save"></i> Guardar envío</button>&nbsp;&nbsp;
+                            <!-- [disabled]="pedidoForm.invalid" -->
+                            <button routerLink="/dashboard/pedidos" type="button" class="btn btn-inverse"><i class="ti-na"></i> Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
