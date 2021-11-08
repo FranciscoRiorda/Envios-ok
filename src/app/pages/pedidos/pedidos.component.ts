@@ -4,7 +4,6 @@ import { PedidosService } from '../../services/pedidos.service';
 import { BusquedasService } from '../../services/busquedas.service';
 import Swal from 'sweetalert2';
 import { Clientes } from '../../models/clientes.model';
-import { estadoPedido } from '../../interfaces/estadoPedido.interface';
 
 @Component({
   selector: 'app-pedidos',
@@ -111,14 +110,28 @@ export class PedidosComponent implements OnInit {
 
     cambiarEstadoEntrega(pedido: Pedidos) {
 
-      this.pedidosService.guardarPedido(pedido)
-        .subscribe(resp => {
-          Swal.fire(
-            'Estado de entrega modificado',
-            `El estado del pedido de ${pedido.nombreCliente} ha sido modificado`,
-            'success'
-          )
-        });
+      if(pedido.estadoEntrega === 'No Entregado') {
+        pedido.costoEnvio = 0;
+
+        this.pedidosService.guardarPedido(pedido)
+          .subscribe(resp => {
+            Swal.fire(
+              'Estado de entrega modificado',
+              `El estado del pedido de ${pedido.nombreCliente} ha sido modificado`,
+              'success'
+            )
+          });
+      } else {
+        this.pedidosService.guardarPedido(pedido)
+          .subscribe(resp => {
+            Swal.fire(
+              'Estado de entrega modificado',
+              `El estado del pedido de ${pedido.nombreCliente} ha sido modificado`,
+              'success'
+            )
+          });
+      }
+
       }
 
 

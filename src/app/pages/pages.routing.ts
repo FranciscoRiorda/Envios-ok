@@ -52,7 +52,7 @@ const routes: Routes = [
               //Registros
     {path:'registroEnvios', canActivate: [AdminGuard], component: RegistroEnviosComponent, data: {titulo: 'Registros de Envíos'}},
     {path:'registroGastos', canActivate: [AdminGuard], component: RegistroGastosComponent, data: {titulo: 'Registro de gastos'}},
-    {path:'rendimientos', canActivate: [AdminGuard], component: RendimientosComponent, data: {titulo: 'Rendimientos'}},
+    {path:'rendimientos', canActivate: [AdminGuard], component: RendimientosComponent, data: {titulo: 'Tablero de control'}},
   ]
 }
 
