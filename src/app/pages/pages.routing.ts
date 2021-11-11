@@ -31,7 +31,7 @@ const routes: Routes = [
   component: PagesComponent,
   canActivate: [AuthGuard],
   children: [
-    {path:'', component: DashboardComponent, data: {titulo: 'Inicio'}},
+    {path:'', component: DashboardComponent, data: {titulo: ''}},
     //Mi cuenta
     {path:'cuenta', component: CuentaComponent, data: {titulo: 'Mi Cuenta'}},
     //Gestión de pedidos

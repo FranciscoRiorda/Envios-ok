@@ -112,6 +112,7 @@ export class PedidosComponent implements OnInit {
 
       if(pedido.estadoEntrega === 'No Entregado') {
         pedido.costoEnvio = 0;
+        pedido.estadoRetiro = 'No Retirado';
 
         this.pedidosService.guardarPedido(pedido)
           .subscribe(resp => {

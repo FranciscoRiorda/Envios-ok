@@ -52,7 +52,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="w5">Nº</th>
+                                <th class="w1">Nº</th>
                                 <th class="w5">Nombre cliente</th>
                                 <th class="w5">Día retiro</th>
                                 <th class="w5">Domicilio retiro</th>
@@ -70,18 +70,18 @@
                                 <td>{{i + 1 }}</td>
                                 <td>{{pedido.nombreCliente}}</td>
                                 <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
-                                <td>{{pedido.domicilioRetiro}}</td>
+                                <td class="tamaño4">{{pedido.domicilioRetiro}}</td>
                                 <td>
-                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                    <select class="form-control tamaño4" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
                                         <option value="Pendiente">Pendiente</option>
                                         <option value="Retirado">Retirado</option>
                                         <option value="No Retirado" >No Retirado</option>
                                     </select>
                                 </td>
                                 <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
-                                <td>{{pedido.domicilioEntrega}}</td>
+                                <td class="tamaño4">{{pedido.domicilioEntrega}}</td>
                                 <td>
-                                    <select class="form-control tamaño" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                    <select class="form-control tamaño4" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
                                         <option value="Pendiente">Pendiente</option>
                                         <option value="Entregado">Entregado</option>
                                         <option value="No Entregado">No Entregado</option>

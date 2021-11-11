@@ -55,6 +55,10 @@
     width: 3px;
 }
 
+.w1 {
+    width: 1px;
+}
+
 .avatar {
     /* border: 1px solid grey; */
     border-radius: 100%;
@@ -120,6 +124,10 @@
     font-size: 11px;
 }
 
+.tamaño4 {
+    font-size: 12px;
+}
+
 .actualizar {
     position: initial;
     margin-left: 6%;
@@ -156,4 +164,12 @@
 
 .verticalLine {
     border-left: 0.2px solid #7e7e7e8a;
+}
+
+.chat {
+    font-weight: bold;
+}
+
+.chat2 {
+    font-weight: bolder;
 }
