@@ -1,0 +1,223 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card m-b-0">
+            <!-- .chat-row -->
+            <div class="chat-main-box">
+
+                <div class="chat-right-aside">
+                    <div class="chat-main-header">
+                        <div class="p-20 b-b">
+                            <h3 class="box-title">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Ayuda en línea</font>
+                                </font>
+                            </h3>
+                        </div>
+                        <br>
+                        <div class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;" class="cursor">- ¿Necesitas ayuda? <i class="chat" (click)="nuevoMensaje1()">Haz click aquí</i></font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 1 -->
+                        <div *ngIf="mensaje1 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- ¿Que operación deseas realizar?: <i class="chat cursor" (click)="nuevoMensaje2()">Nuevo Envío</i> - <i class="chat cursor" (click)="nuevoMensaje3()">Nuevo Gasto</i> - <i class="chat cursor" (click)="nuevoMensaje4()">Actualizar Envío</i>                                        -
+                                        <i class="chat cursor" (click)="nuevoMensaje5()">Actualizar o Eliminar Gasto</i>.</font>
+                                </font><br><br>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- <i class="chat cursor" (click)="nuevoMensaje6()">Otras operaciones.</i></font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 2 -->
+                        <div *ngIf="mensaje2 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás realizar la carga de un nuevo Envío de paquetería siguiendo la ruta: <i class="chat2 cursor">Gestión de Pedidos > Envíos > 'Cargar nuevo Envío'</i>. <br>- Desde la opción &nbsp;'Descargar Remito'&nbsp; <i class="fa fa-download"></i>                                        &nbsp; podrás descargar el remito correspondiente para el retiro y entrega del paquete.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 3 -->
+                        <div *ngIf="mensaje3 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás realizar la carga de un nuevo Gasto siguiendo la ruta: <i class="chat2 cursor">Gestión de Pedidos > Gastos > 'Cargar Gasto'</i>.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 4 -->
+                        <div *ngIf="mensaje4 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás Actualizar o Modificar datos de un Envío cargado, siguiendo la ruta: <i class="chat2 cursor">Gestión de Pedidos > Envíos > <i class="fa fa-tasks text-info"></i> </i> . También podrás cambiar el estado de 'Retiro'
+                                        y 'Entrega' de cada paquete desde la lista de pedidos.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 5 -->
+                        <div *ngIf="mensaje5 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás Actualizar o Eliminar un gasto, siguiendo la ruta: <i class="chat2 cursor">Gestión de Pedidos > Gastos</i>. Podrás modificar el detalle del gasto desde su propio campo y luego deberás presionar el botón de
+                                        Guardar
+                                        <i class="fa fa-floppy-o text-inverse m-r-10"></i> que se encuentra a su derecha. Desde la <i class="fa fa-close text-danger"></i> podrás eliminar el gasto. Ten en cuenta que al eliminar el gasto, no podrá recuperarse.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 6 -->
+                        <div *ngIf="mensaje6 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Mantenimientos de Clientes y Usuarios: <i class="chat cursor" (click)="nuevoMensaje7()">Crear nuevo Cliente</i> ó <i class="chat cursor" (click)="nuevoMensaje8()">Crear nuevo Usuario</i>.</font>
+                                </font><br>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- También podrás: <i class="chat cursor" (click)="nuevoMensaje9()">Ver datos del Cliente</i> ó <i class="chat cursor" (click)="nuevoMensaje10()">Eliminar un cliente</i> - <i class="chat cursor" (click)="nuevoMensaje11()">Ver datos del Usuario</i>                                        , <i class="chat cursor" (click)="nuevoMensaje12()">Cambiar contraseña del usuario</i> ó <i class="chat cursor" (click)="nuevoMensaje13()">Eliminar un usuario</i></font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 7 -->
+                        <div *ngIf="mensaje7 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Para crear un nuevo Cliente, deberás seguir la ruta <i class="chat2 cursor">Mantenimientos > Clientes > 'Crear nuevo cliente'.</i> Allí se te solicitarán los datos necesarios para dar de alta un nuevo cliente en el
+                                        sistema.
+                                    </font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 8 -->
+                        <div *ngIf="mensaje8 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Para crear un nuevo Usuario, deberás seguir la ruta <i class="chat2 cursor">Mantenimientos > Usuarios > 'Crear nuevo usuario'.</i> Allí se te solicitarán los datos necesarios para dar de alta un nuevo usuario en el
+                                        sistema. Esta opción sólo estará disponible para usuarios Administradores.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 9 -->
+                        <div *ngIf="mensaje9 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás ver los datos de un cliente ingresando en <i class="chat2 cursor">Mantenimientos > Clientes > Datos del Cliente <i class="fa fa-user-o text-info"></i> .</i> Allí encontrarás los datos del cliente seleccionado.
+                                        También podrás modificarlos en caso de ser necesario.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 10 -->
+                        <div *ngIf="mensaje10 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás eliminar un cliente ingresando en <i class="chat2 cursor">Mantenimientos > Clientes > Borrar <i class="fa fa-close text-danger"></i> .</i> Ten en cuenta que al borrar el cliente, no podrá recuperarse.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 11 -->
+                        <div *ngIf="mensaje11 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás ver los datos de un usuario ingresando en <i class="chat2 cursor">Mantenimientos > Usuarios > Datos del Usuario <i class="fa fa-user-o text-info"></i> .</i> Desde el ícono de la derecha. Allí encontrarás los
+                                        datos del Usuario seleccionado. También podrás modificarlos en caso de ser necesario. Esta opción sólo estará disponible para usuarios Administradores.</font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 12 -->
+                        <div *ngIf="mensaje12 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás modificar la contraseña de acceso del usuario ingresando en <i class="chat2 cursor">Mantenimientos > Usuarios > Cambiar Contraseña <i class="fa fa-key text-success"></i> .</i> Esta opción sólo estará disponible
+                                        para usuarios Administradores.
+                                    </font>
+                                </font>
+                            </div>
+                        </div>
+                        <!-- Mensaje 13 -->
+                        <div *ngIf="mensaje13 == true" class="chat-content">
+                            <h5 class="badge badge-warning">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">Asistente virtual</font>
+                                </font>
+                            </h5>
+                            <div class="box bg-light-info">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">- Podrás eliminar un usuario ingresando en <i class="chat2 cursor">Mantenimientos > Usuarios > Borrar <i class="fa fa-close text-danger"></i> .</i> Ten en cuenta que al borrar el usuario, no podrá recuperarse. Esta
+                                        opción sólo estará disponible para usuarios Administradores.</font>
+                                </font>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

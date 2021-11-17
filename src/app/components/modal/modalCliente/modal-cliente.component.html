@@ -1,0 +1,107 @@
+<div class="fondo-modal animated fadeIn fast" [class.oculto]="modalClientesService.ocultarModalClientes">
+
+    <div class="col-md-12 acomodar">
+        <div class="login-box card">
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Crear un nuevo cliente</font>
+                    </font>
+                </h4>
+                <hr>
+
+                <div class="tab-content tabcontent-border">
+                    <div class="tab-pane active" id="perfil" role="tabpanel" aria-expanded="true">
+                        <div class="p-20">
+
+                            <form class="form-horizontal form-material" id="loginform" [formGroup]="registerForm" (ngSubmit)="crearCliente()">
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+
+
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p *ngIf="campoNoValido('nombre')">* El nombre es obligatorio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="DNI del cliente" formControlName="dni">
+                                                        </div>
+                                                        <div class="col text-danger">
+                                                            <p *ngIf="campoNoValido('dni')">* El DNI del cliente es obligatorio</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Teléfono del cliente" formControlName="telefono">
+                                                        </div>
+                                                        <div class="col text-danger">
+                                                            <p *ngIf="campoNoValido('telefono')">* El teléfono del cliente es obligatorio</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Email del cliente" formControlName="email">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p *ngIf="campoNoValido('email')">* El correo es obligatorio y debe ser válido</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Domicilio del cliente" formControlName="domicilio">
+                                                        </div>
+                                                        <div class="col text-danger">
+                                                            <p *ngIf="campoNoValido('domicilio')">* El domicilio del cliente es obligatorio</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <textarea name=observaciones type="text" rows="5" cols="50" class="form-control" type="text" placeholder="Observaciones" formControlName="observaciones"></textarea>
+                                                        </div>
+                                                        <div class="col text-danger">
+                                                            <p *ngIf="campoNoValido('observaciones')"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group centrarBtn">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light "><i class="fa fa-user-circle-o"></i> Crear cliente</button>&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-inverse waves-effect waves-light "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" (click)="cerrarModal()"><i class="ti-na"></i> Cancelar</font></font></button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

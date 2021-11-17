@@ -1,0 +1,156 @@
+<div class="fondo-modal animated fadeIn fast" [class.oculto]="modalUsuarioService.ocultarModalUsuario">
+
+    <div class="col-md-12 acomodar">
+        <div class="login-box card">
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Crear un nuevo usuario</font>
+                    </font>
+                </h4>
+                <hr>
+
+                <div class="tab-content tabcontent-border ">
+                    <div class="tab-pane active" id="perfil" role="tabpanel" aria-expanded="true">
+                        <div class="p-20">
+
+                            <form class="form-horizontal form-material" id="loginform" [formGroup]="registerForm" (ngSubmit)="crearUsuario()">
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+
+
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('nombre')">* El nombre es obligatorio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('apellido')">* El apellido es obligatorio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="DNI" formControlName="dni">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('dni')">* El dni es obligatorio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Teléfono" formControlName="telefono">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('telefono')">* El teléfono es obligatorio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Email" formControlName="email">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('email')">* El correo es obligatorio y debe ser válido</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="text" placeholder="Domicilio" formControlName="domicilio">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('domicilio')">* El domicilio es obligatorio</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-t-20">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="date" placeholder="Fecha de nacimiento" formControlName="nacimiento">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('nacimiento')">* La fecha de nacimiento es obligatoria</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="password" placeholder="Contraseña" formControlName="password">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="campoNoValido('password')">* Debe ingresar una constraseña válida</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-xs-12">
+                                                            <input class="form-control" type="password" placeholder="Confirmar contraseña" formControlName="password2">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="passwordDif()">* Las contraseñas deben ser iguales</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-10">
+                                                            <div class="checkbox checkbox-primary p-t-0">
+                                                                <input id="checkbox-signup" type="checkbox" formControlName="terminos">
+                                                                <label for="checkbox-signup"> Se notifica y aceptan los <a routerLink="/dashboard/terminosYcondiciones" target="_blank">términos y condiciones</a></label>
+                                                            </div>
+                                                            <div class="col text-danger">
+                                                                <p class="tamaño3" *ngIf="aceptaTerminos()">* Debe aceptar los términos y condiciones</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group centrarBtn">
+                                    <button type="submit" [disabled]="passwordDif()" class="btn btn-info waves-effect waves-light "><i class="fa fa-user-circle-o"></i> Crear usuario</button>&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-inverse waves-effect waves-light "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" (click)="cerrarModal()"><i class="ti-na"></i> Cancelar</font></font></button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

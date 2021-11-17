@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Modificar datos del usuario </font>
+                    </font>
+                </h4>
+                <h6 class="card-subtitle">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Datos personales del usuario</font>
+                    </font>
+                </h6>
+
+                <form class="form p-t-20" [formGroup]="usuarioForm" (submit)="actualizarUsuario()">
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su nombre" formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su apellido" formControlName="apellido">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DNI</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-id-badge"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su número de DNI" formControlName="dni">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-headphone-alt"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su número de teléfono" formControlName="telefono">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domicilio</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-direction-alt"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su domicilio de residencia" formControlName="domicilio">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de nacimiento</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrse su fecha de nacimiento: 'dd/mm/aa'" formControlName="nacimiento">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dirección de correo electrónico</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su correo electrónico" formControlName="email">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="usuarioForm.invalid"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-save"></i> Guardar cambios</font></font></button><br><br>
+                    <button routerLink="/dashboard/usuarios" type="button" class="btn btn-inverse  btn-block waves-effect waves-light m-r-10"><i class="ti-na"></i> Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Foto de perfíl</font>
+                    </font>
+                </h4>
+                <h6 class="card-subtitle">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Cambiar foto de perfíl del usuario</font>
+                    </font>
+                </h6>
+
+                <div class="text-center">
+                    <img class="img-avatar" *ngIf="!imgTemp" [src]="usuario!.imagenUrl" />
+                    <img class="img-avatar" *ngIf="imgTemp" [src]="imgTemp" />
+                </div>
+
+                <br>
+
+                <input type="file" (change)="cambiarImagen($event)">
+
+                <br><br>
+
+                <button type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!imagenSubir" (click)="subirImagen()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-save"></i> Cambiar foto</font></font></button>
+            </div>
+         </div> -->

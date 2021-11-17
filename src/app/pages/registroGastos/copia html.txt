@@ -1,0 +1,474 @@
+<!-- <form method="get" [formGroup]="gastosForm" (submit)="rango()">
+    <div class="col-lg-12 m-b-30">
+        <h4 class="card-title">
+            <font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Gastos mensuales</font>
+            </font>
+        </h4>
+        <div>
+            <div class="form-group row">
+                <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de inicio</font></font></label>
+                <div class="col-md-9">
+                    <input type="date" value="" class="form-control" placeholder="dd / mm / aaaa" formControlName="fechaInicial">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label text-right col-md-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de fin</font></font></label>
+                <div class="col-md-9">
+                    <input type="date" value="" class="form-control" placeholder="dd / mm / aaaa" formControlName="fechaFinal">
+                </div>
+            </div>
+            <button [disabled]="gastosForm.invalid" class="btn btn-info"><i class="fa fa-save"></i> Buscar gastos</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+</form>
+
+<div class="card card-body">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="w150">Fecha</th>
+                    <th>Descripción</th>
+                    <th class="w20"></th>
+                    <th class="w120">Importe</th>
+                    <th class="text-nowrap w100">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gasto of gastos">
+                    <td>
+                        <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                    </td>
+                    <td>$</td>
+                    <td>
+                        <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                    </td>
+                    <td class="text-nowrap text-center">
+                        <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                        <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+
+<!-- 
+<div class="card-body">
+    <h6 class="card-subtitle">
+    </h6>
+    <p>
+        <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            Gastos de Agosto 2021
+        </font></font></button>
+    </p>
+    <div class="collapse" id="collapseExample" style="">
+        <div class="card card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="w150">Fecha</th>
+                            <th>Descripción</th>
+                            <th class="w20"></th>
+                            <th class="w120">Importe</th>
+                            <th class="text-nowrap w100">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let gasto of gastoAgosto2021">
+                            <td>
+                                <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                            </td>
+                            <td>$</td>
+                            <td>
+                                <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                            </td>
+                            <td class="text-nowrap text-center">
+                                <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+&nbsp;
+
+
+<div class="card-body">
+    <h6 class="card-subtitle">
+    </h6>
+    <p>
+        <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            Gastos de Septiembre 2021
+        </font></font></button>
+    </p>
+    <div class="collapse" id="collapseExample" style="">
+        <div class="card card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="w150">Fecha</th>
+                            <th>Descripción</th>
+                            <th class="w20"></th>
+                            <th class="w120">Importe</th>
+                            <th class="text-nowrap w100">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let gasto of gastoSeptiembre2021">
+                            <td>
+                                <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                            </td>
+                            <td>$</td>
+                            <td>
+                                <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                            </td>
+                            <td class="text-nowrap text-center">
+                                <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Registros mensuales de los gastos</font>
+                    </font>
+                </h4>
+                <!-- <h6 class="card-subtitle">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">agregar clase </font>
+                    </font><code>minimal-faq</code>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">al acordeón para preguntas frecuentes limpias</font>
+                    </font>
+                </h6> -->
+                <div id="accordion2" role="tablist" class="minimal-faq" aria-multiselectable="true">
+                    <div class="card m-b-0">
+                        <div class="card-header" role="tab" id="headingOne11">
+                            <h5 class="mb-0">
+                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne11" aria-expanded="true" aria-controls="collapseOne11">
+                                    <font style="vertical-align: inherit;">
+                                        <!-- <font style="vertical-align: inherit;">
+                                            Q1. </font> -->
+                                        <font style="vertical-align: inherit;">Diciembre 2021
+                                        </font>
+                                    </font>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseOne11" class="collapse show" role="tabpanel" aria-labelledby="headingOne11" style="">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w150">Fecha</th>
+                                                <th>Descripción</th>
+                                                <th class="w20"></th>
+                                                <th class="w120">Importe</th>
+                                                <th class="text-nowrap w100">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let gasto of gastos">
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                                                </td>
+                                                <td>$</td>
+                                                <td>
+                                                    <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                                                </td>
+                                                <td class="text-nowrap text-center">
+                                                    <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                                    <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-b-0">
+                        <div class="card-header" role="tab" id="headingTwo22">
+                            <h5 class="mb-0">
+                                <a class="link collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo22" aria-expanded="false" aria-controls="collapseTwo22">
+                                    <font style="vertical-align: inherit;">
+                                        <!-- <font style="vertical-align: inherit;">
+                                            Q2. </font> -->
+                                        <font style="vertical-align: inherit;">Noviembre 2021
+                                        </font>
+                                    </font>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo22" class="collapse" role="tabpanel" aria-labelledby="headingTwo22" style="">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w150">Fecha</th>
+                                                <th>Descripción</th>
+                                                <th class="w20"></th>
+                                                <th class="w120">Importe</th>
+                                                <th class="text-nowrap w100">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let gasto of gastos">
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                                                </td>
+                                                <td>$</td>
+                                                <td>
+                                                    <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                                                </td>
+                                                <td class="text-nowrap text-center">
+                                                    <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                                    <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-b-0">
+                        <div class="card-header" role="tab" id="headingThree33">
+                            <h5 class="mb-0">
+                                <a class="link collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree33" aria-expanded="false" aria-controls="collapseThree33">
+                                    <font style="vertical-align: inherit;">
+                                        <!-- <font style="vertical-align: inherit;">
+                                            Q3. </font> -->
+                                        <font style="vertical-align: inherit;">Octubre 2021
+                                        </font>
+                                    </font>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseThree33" class="collapse" role="tabpanel" aria-labelledby="headingThree33" style="">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w150">Fecha</th>
+                                                <th>Descripción</th>
+                                                <th class="w20"></th>
+                                                <th class="w120">Importe</th>
+                                                <th class="text-nowrap w100">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let gasto of gastos">
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                                                </td>
+                                                <td>$</td>
+                                                <td>
+                                                    <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                                                </td>
+                                                <td class="text-nowrap text-center">
+                                                    <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                                    <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card m-b-0">
+                        <div class="card-header" role="tab" id="headingOne111">
+                            <h5 class="mb-0">
+                                <a class="link collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne111" aria-expanded="false" aria-controls="collapseOne111">
+                                    <font style="vertical-align: inherit;">
+                                        <!-- <font style="vertical-align: inherit;">
+                                            Q4. </font> -->
+                                        <font style="vertical-align: inherit;">Septiembre 2021
+                                        </font>
+                                    </font>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseOne111" class="collapse" role="tabpanel" aria-labelledby="headingOne111" style="">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w150">Fecha</th>
+                                                <th>Descripción</th>
+                                                <th class="w20"></th>
+                                                <th class="w120">Importe</th>
+                                                <th class="text-nowrap w100">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let gasto of gastos">
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                                                </td>
+                                                <td>$</td>
+                                                <td>
+                                                    <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                                                </td>
+                                                <td class="text-nowrap text-center">
+                                                    <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                                    <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card m-b-0">
+                        <div class="card-header" role="tab" id="headingTwo222">
+                            <h5 class="mb-0">
+                                <a class="collapsed link" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo222" aria-expanded="false" aria-controls="collapseTwo222">
+                                    <font style="vertical-align: inherit;">
+                                        <!-- <font style="vertical-align: inherit;">
+                                            Q5. </font> -->
+                                        <font style="vertical-align: inherit;">Agosto 2021
+                                        </font>
+                                    </font>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo222" class="collapse" role="tabpanel" aria-labelledby="headingTwo222">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w150">Fecha</th>
+                                                <th>Descripción</th>
+                                                <th class="w20"></th>
+                                                <th class="w120">Importe</th>
+                                                <th class="text-nowrap w100">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let gasto of gastos">
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                                                </td>
+                                                <td>$</td>
+                                                <td>
+                                                    <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                                                </td>
+                                                <td class="text-nowrap text-center">
+                                                    <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                                    <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingThree333">
+                            <h5 class="mb-0">
+                                <a class="collapsed link" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree333" aria-expanded="false" aria-controls="collapseThree333">
+                                    <font style="vertical-align: inherit;">
+                                        <!-- <font style="vertical-align: inherit;">
+                                            Q6. </font> -->
+                                        <font style="vertical-align: inherit;">Julio 2021
+                                        </font>
+                                    </font>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapseThree333" class="collapse" role="tabpanel" aria-labelledby="headingThree333">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w150">Fecha</th>
+                                                <th>Descripción</th>
+                                                <th class="w20"></th>
+                                                <th class="w120">Importe</th>
+                                                <th class="text-nowrap w100">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let gasto of gastos">
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Fecha" [(ngModel)]="gasto.fecha">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Descripción del gasto" [(ngModel)]="gasto.descripcion">
+                                                </td>
+                                                <td>$</td>
+                                                <td>
+                                                    <input type="number" class="form-control" placeholder="Importe" [(ngModel)]="gasto.importe">
+                                                </td>
+                                                <td class="text-nowrap text-center">
+                                                    <a (click)="guardarCambios(gasto)" data-toggle="tooltip" title="Guardar cambios" class="cursor"> <i class="fa fa-floppy-o text-inverse m-r-10"></i> </a>
+                                                    <a (click)="eliminarGasto(gasto)" data-toggle="tooltip" title="Borrar" class="cursor"> <i class="fa fa-close text-danger"></i> </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

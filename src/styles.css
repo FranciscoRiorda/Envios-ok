@@ -1,0 +1,183 @@
+.fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+#themecolors .Selector,
+.cursor {
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.img-avatar {
+    height: 150px;
+    width: 150px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w140 {
+    width: 187px;
+}
+
+.w150 {
+    width: 150px;
+}
+
+.w120 {
+    width: 120px;
+}
+
+.w80 {
+    width: 80px;
+}
+
+.w50 {
+    width: 50px;
+}
+
+.w20 {
+    width: 20px;
+}
+
+.w5 {
+    width: 5px;
+}
+
+.w3 {
+    width: 3px;
+}
+
+.w1 {
+    width: 1px;
+}
+
+.avatar {
+    /* border: 1px solid grey; */
+    border-radius: 100%;
+    width: 40px;
+}
+
+.oculto {
+    display: none;
+}
+
+.fondo-modal {
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 90;
+}
+
+.centrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.contenedor::-webkit-scrollbar {
+    width: 7px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.acomodar {
+    padding-top: 10px;
+    position: fixed;
+}
+
+.acomodar2 {
+    left: 20px;
+    right: 20px;
+    padding-top: 10px;
+    position: fixed;
+    height: 100%;
+}
+
+.acomodarGasto {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: table;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.tamaño {
+    font-size: 10px;
+}
+
+.tamaño2 {
+    font-size: 15px;
+}
+
+.tamaño3 {
+    font-size: 11px;
+}
+
+.tamaño4 {
+    font-size: 12px;
+}
+
+.actualizar {
+    position: initial;
+    margin-left: 6%;
+    margin-right: 20%;
+}
+
+.botonIzq {
+    width: 20%;
+    margin-left: 350px;
+    position: inherit;
+}
+
+.botonDer {
+    width: 20%;
+    margin-right: 350px;
+    position: inherit;
+}
+
+.centrarBtn {
+    margin-left: 33%;
+}
+
+.der {
+    margin-left: 50%;
+}
+
+.derr {
+    margin-left: 60%;
+}
+
+.derrr {
+    margin-left: 30%;
+}
+
+.verticalLine {
+    border-left: 0.2px solid #7e7e7e8a;
+}
+
+.chat {
+    font-weight: bold;
+}
+
+.chat2 {
+    font-weight: bolder;
+}

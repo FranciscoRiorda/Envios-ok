@@ -1,0 +1,133 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar pedido por nombre de cliente.." #txtTermino (keyup)="buscar(txtTermino.value)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row tamaño2" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row float-right">
+                    <div class="text-right">
+                        <button class="btn btn-info" routerLink="/dashboard/pedidos/nuevo">
+                            <i class="fa fa-paper-plane-o"></i> Cargar nuevo envío
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <hr>
+
+                <div>
+                    <div class="row">
+                        <h4 class="card-title">Envíos programados ({{totalPedidos}})</h4>
+
+                        <div class="text-right derr">
+                            <th>Ingresos: &nbsp; {{totalIngreso() |currency}}</th>
+                        </div>
+                    </div>
+                    <hr>
+
+                </div>
+                <!-- <h6 class="card-subtitle">Pedidos registrados</h6> -->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="w1">Nº</th>
+                                <th class="w5">Nombre cliente</th>
+                                <th class="w5">Día retiro</th>
+                                <th class="w5">Domicilio retiro</th>
+                                <th>Estado retiro</th>
+                                <th class="w5">Día entrega</th>
+                                <th class="w5">Domicilio entrega</th>
+                                <th>Estado entrega</th>
+                                <th class="w5">Costo envío</th>
+                                <th class="w3">Estado</th>
+                                <th class="text-nowrap w3">Acc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pedido of pedidos; index as i">
+                                <td>{{i + 1 }}</td>
+                                <td>{{pedido.nombreCliente}}</td>
+                                <td>{{pedido.diaRetiro | date:'dd/MM/yyyy'}}</td>
+                                <td class="tamaño4">{{pedido.domicilioRetiro}}</td>
+                                <td>
+                                    <select class="form-control tamaño4" [(ngModel)]="pedido.estadoRetiro" (change)="cambiarEstadoRetiro(pedido)">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Retirado">Retirado</option>
+                                        <option value="No Retirado" >No Retirado</option>
+                                    </select>
+                                </td>
+                                <td>{{pedido.diaEntrega | date:'dd/MM/yyyy'}}</td>
+                                <td class="tamaño4">{{pedido.domicilioEntrega}}</td>
+                                <td>
+                                    <select class="form-control tamaño4" [(ngModel)]="pedido.estadoEntrega" (change)="cambiarEstadoEntrega(pedido)">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Entregado">Entregado</option>
+                                        <option value="No Entregado">No Entregado</option>
+                                    </select>
+                                </td>
+                                <td>{{pedido.costoEnvio | currency}}</td>
+                                <td *ngIf="pedido.estadoEntrega == 'Entregado'">
+                                    <div class="label label-table label-success">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Finalizado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'Pendiente'">
+                                    <div class="label label-table label-warning">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Pendiente</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td *ngIf="pedido.estadoEntrega == 'No Entregado'">
+                                    <div class="label label-table label-danger">
+                                        <font style="vertical-align: inherit;">
+                                            <font style="vertical-align: inherit;">Cancelado</font>
+                                        </font>
+                                    </div>
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a [routerLink]="['/dashboard/pedidos', pedido._id]" data-toggle="tooltip" title="Ver usuario"> <i class="fa fa-tasks text-info"></i></a><br>
+                                    <a [routerLink]="['/dashboard/remito', pedido._id]" data-toggle="tooltip" title="Descargar Remito"> <i class="fa fa-download"></i></a>
+                                    <!-- <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <!-- <a (click)="eliminarPedido(pedido)" data-toggle="tooltip" title="Borrar pedido" class="cursor"> <i class="fa fa-close text-danger"></i> </a> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+
+                    <button (click)="cambiarPagina(-10)" [disabled]="deshabilitar1()" Class="btn btn-secondary">Anterior</button>&nbsp;
+                    <button (click)="cambiarPagina(10)" [disabled]="deshabilitar2()" Class="btn btn-secondary">Siguiente</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

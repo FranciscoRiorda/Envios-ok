@@ -1,0 +1,124 @@
+<div class="row">
+    <form action="#" id="pdfForm" class="form-horizontal" [formGroup]="pdfForm">
+        <div class="col-md-12">
+            <div class="card form-body printableArea">
+                <h3><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></b> <span class="pull-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"># {{numRemito}}</font></font></span></h3>
+                <hr>
+                <div class=" form-group row">
+                    <div class="form-group col-md-12">
+                        <div class="pull-left">
+                            <address>
+                            <h3> &nbsp;<img src="./assets/images/LogoNegroSinFondo2.png" width= 180px height= 60px; alt="homepage" class="dark-logo" /></h3>
+                            <br><br>
+                            <p class="text-muted m-l-5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hernando, Córdoba
+                                 </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sarmiento 566,
+                                 </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tel: 3534795305,
+                                 </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CUIT: 20357752113</font></font></p>
+                        </address>
+                            <br><br><br>
+                        </div>
+                        <br><br><br>
+                        <div class="pull-right text-right">
+                            <address>
+                            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{nombre}} </font></font></h3> <br>
+                            <h4 class="font-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></h4>
+                            <p class="text-muted m-l-30"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Domicilio de retiro: {{domicilioRetiro}}
+                                 </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domicilio de entrega: {{domicilioEntrega}}
+                                 </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{correo}}
+                                 </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono de contacto: {{telefono}}</font></font></p><br>
+                            <p class="m-t-30"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de retiro:</font></font> &nbsp;</b> <i class="fa fa-calendar"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> {{fechaRetiro |date:"dd 'de' MMMM 'de' yyyy"}}</font></font></p>
+                            <p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de entrega:</font></font>&nbsp;</b> <i class="fa fa-calendar"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> {{fechaEntrega |date:"dd 'de' MMMM 'de' yyyy"}}</font></font></p>
+                        </address>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-responsive m-t-40" style="clear: both;">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">#</font>
+                                            </font>
+                                        </th>
+                                        <th>
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Descripción</font>
+                                            </font>
+                                        </th>
+                                        <th class="text-right">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Cant Paquetes</font>
+                                            </font>
+                                        </th>
+
+                                        <th class="text-right">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Total</font>
+                                            </font>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">1</font>
+                                            </font>
+                                        </td>
+                                        <td>
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">Envío de paquetería</font>
+                                            </font>
+                                        </td>
+                                        <td class="text-right">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;"><input class="w50" type="number" name="cantPaq" value="1"></font>
+                                            </font>
+                                        </td>
+                                        <td class="text-right">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;"> {{costoEnvio |currency}} </font>
+                                            </font>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="pull-right m-t-30 text-right">
+                            <!-- <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Sub - Monto total: $ 13,848</font>
+                                </font>
+                            </p>
+                            <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">iva (10%): $ 138 </font>
+                                </font>
+                            </p> -->
+                            <hr>
+                            <h3><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Total:</font></font></b>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;"> {{costoEnvio |currency}}</font>
+                                </font>
+                            </h3>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="text-right">
+        <!-- <button class="btn btn-danger" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Proceder al pago </font></font></button> -->
+        <button class="btn btn-block btn-outline-success col-lg-12 col-md-4" value="crearPDF" (click)="downloadPDF()" type="button"> <span><i class="fa fa-print"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Exportar a PDF</font></font></span> </button>
+    </div>&nbsp;&nbsp;&nbsp;
+    <div>
+        <button class="btn btn-block btn-outline-inverse col-lg-12 col-md-4" routerLink="/dashboard/pedidos" type="button"> <span><i class="ti-na"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Volver</font></font></span> </button>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Modificar datos de mi perfíl</font>
+                    </font>
+                </h4>
+                <h6 class="card-subtitle">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Datos personales</font>
+                    </font>
+                </h6>
+                <form class="form p-t-20" [formGroup]="perfilForm" (submit)="actualizarPerfil()">
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su nombre" formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su apellido" formControlName="apellido">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DNI</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-id-badge"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su número de DNI" formControlName="dni">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-headphone-alt"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su número de teléfono" formControlName="telefono">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domicilio</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-direction-alt"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su domicilio de residencia" formControlName="domicilio">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de nacimiento</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrse su fecha de nacimiento: 'dd/mm/aa'" formControlName="nacimiento">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dirección de correo electrónico</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su correo electrónico" formControlName="email">
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="pwd1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contraseña actual</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-unlock"></i></div>
+                            <input type="password" class="form-control" id="pwd1" placeholder="Ingrese su contraseña actual" formControlName="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nueva contraseña</font></font></label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-lock"></i></div>
+                            <input type="password" class="form-control" id="pwd2" placeholder="Ingrese su nueva contraseña" formControlName="password2">
+                        </div>
+                    </div> -->
+
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="perfilForm.invalid"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-save"></i> Guardar cambios</font></font></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Foto de perfíl</font>
+                    </font>
+                </h4>
+                <h6 class="card-subtitle">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;"></font>
+                    </font>
+                </h6>
+
+                <div class="text-center">
+                    <img class="img-avatar" *ngIf="!imgTemp" [src]="usuario!.imagenUrl" />
+                    <img class="img-avatar" *ngIf="imgTemp" [src]="imgTemp" />
+                </div>
+
+                <br>
+
+                <input type="file" (change)="cambiarImagen($event)">
+
+                <br><br>
+
+                <button (click)="refresh()" type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!imagenSubir" (click)="subirImagen()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-save"></i> Cambiar foto</font></font></button>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

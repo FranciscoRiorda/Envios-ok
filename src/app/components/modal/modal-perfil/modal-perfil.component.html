@@ -1,0 +1,130 @@
+<div class="fondo-modal animated fadeIn fast" [class.oculto]="modalPerfilService.ocultarModalPerfil">
+
+    <div class="col-md-12 acomodar">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Editar usuario</font>
+                    </font>
+                </h4>
+
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#perfil" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perfil</font></font></span></a>                        </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#foto" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Foto</font></font></span></a>                        </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contraseña</font></font></span></a>                        </li>
+                </ul>
+
+
+                <div class="tab-content tabcontent-border">
+                    <div class="tab-pane active" id="perfil" role="tabpanel" aria-expanded="true">
+                        <div class="p-20">
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <form class="form p-t-0" [formGroup]="registerForm">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su nombre" formControlName="nombre">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su apellido" formControlName="apellido">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DNI</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-id-badge"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su número de DNI" formControlName="dni">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-headphone-alt"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su número de teléfono" formControlName="telefono">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <form class="form p-t-0" [formGroup]="registerForm">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domicilio</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-direction-alt"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese su domicilio de residencia" formControlName="domicilio">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputuname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fecha de nacimiento</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-calendar"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrse su fecha de nacimiento: 'dd/mm/aa'" formControlName="nacimiento">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dirección de correo electrónico</font></font></label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su correo electrónico" formControlName="email">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-block waves-effect waves-light botonIzq"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-save"></i> Guardar cambios</font></font></button>
+                                <hr>
+                                <button type="submit" class="btn btn-inverse btn-block waves-effect waves-light botonDer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" (click)="cerrarModal()"><i class="ti-na"></i> Cancelar</font></font></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-20" id="foto" role="tabpanel" aria-expanded="false">
+                        <h3>Seleccione una imagen</h3>
+                        <div class="text-center">
+
+                            <!-- <img class="img-avatar" *ngIf="!imgTemp" [src]="modalPerfilService.img" /> -->
+                            <img class="img-avatar" *ngIf="imgTemp" [src]="imgTemp" />
+                        </div>
+
+                        <br>
+
+                        <input type="file" (change)="cambiarImagen($event)">
+
+                        <div class="modal-footer">
+                            <button type="button" (click)="subirImagen()" (click)="refresh()" class="btn btn-info btn-block waves-effect waves-light botonIzq"><i class="fa fa-save"></i> Cargar imagen</button>
+                            <hr>
+                            <button type="submit" class="btn btn-inverse btn-block waves-effect waves-light botonDer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" (click)="cerrarModal()"><i class="ti-na"></i> Cancelar</font></font></button>
+                        </div>
+                    </div>
+                    <div class="tab-pane p-20" id="contraseña" role="tabpanel" aria-expanded="false">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">3</font>
+                        </font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
